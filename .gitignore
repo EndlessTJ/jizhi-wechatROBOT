@@ -1,0 +1,17 @@
+# Ignore .DS_Store files on OS X
+.DS_Store
+
+.env
+
+db
+
+
+
+.idea/
+.idea/dictionaries/jinta.xml
+.idea/misc.xml
+.idea/vcs.xml
+node_modules
+
+
+*.log
