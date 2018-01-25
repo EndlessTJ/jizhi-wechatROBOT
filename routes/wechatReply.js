@@ -14,7 +14,7 @@ function wechatProof(signature, timestamp, nonce, echostr) {
 		return 'mismatch'
 	}
 }
-router.get('/wechatreply', function(req, res, next) {
+router.get('/', function(req, res, next) {
 	// 微信认证
 	res.send(wechatProof(req.query.signature, req.query.timestamp, req.query.nonce, req.query.echostr))
 
