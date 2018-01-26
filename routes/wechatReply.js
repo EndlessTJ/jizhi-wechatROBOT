@@ -20,8 +20,9 @@ router.get('/', function(req, res, next) {
 	res.send(wechatProof(req.query.signature, req.query.timestamp, req.query.nonce, req.query.echostr))
 });
 router.use('/',function (req, res, next) {
-	console.log('密钥', acessToken);
-	//console.log(req.body)
+	//console.log('密钥', acessToken);
+	//console.log(req.body);
+	console.log(req)
 });
 
 module.exports = router;
