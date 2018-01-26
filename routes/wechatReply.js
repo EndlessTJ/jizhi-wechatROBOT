@@ -30,10 +30,17 @@ router.post('/',function (req, res, next) {
 	});
 	req.on('end', () => {
 		var parser = new xmlParser.Parser();
+		var builder = new xmlParser.Builder();
 		parser.parseString(req.rawBody, function (err, result) {
-			console.log(result);
+			replyJson = result;
+			replyJson.CreateTime = new Date().getTime();
+			replyJson.Content = '你有什么事情？';
+			var replyMsg = builder.buildObject(replyJson);
+			console.log('回复',replyMsg);
+			res.send(replyMsg)
 		});
-		res.send('')
+
+
 	})
 });
 
