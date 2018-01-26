@@ -1,5 +1,6 @@
 const express = require('express');
 const crypto = require('crypto');
+const acessToken = require('./access-token');
 const router = express.Router();
 /* GET home page. */
 function wechatProof(signature, timestamp, nonce, echostr) {
@@ -17,7 +18,10 @@ function wechatProof(signature, timestamp, nonce, echostr) {
 router.get('/', function(req, res, next) {
 	// 微信认证
 	res.send(wechatProof(req.query.signature, req.query.timestamp, req.query.nonce, req.query.echostr))
-
+});
+router.use('/',function (req, res, next) {
+	console.log('密钥', acessToken);
+	//console.log(req.body)
 });
 
 module.exports = router;

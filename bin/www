@@ -7,11 +7,12 @@ require('dotenv').config();
 var app = require('../app');
 var debug = require('debug')('jizhi-wechatrobot:server');
 var http = require('http');
+const { spawn } = require('child_process');
+
 
 /**
  * Get port from environment and store in Express.
  */
-console.log(process.env.PORT);
 var port = normalizePort(process.env.PORT || '3300');
 app.set('port', port);
 
@@ -24,7 +25,17 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
+var Get_Acess_Token = spawn('node',['./routes/access-token.js']);
+Get_Acess_Token.stdout.on('data', (data) => {
+	console.log(`stdout: ${data}`);
+});
+Get_Acess_Token.stderr.on('data', (data) => {
+	console.log(`stderr: ${data}`);
+});
 
+Get_Acess_Token.on('close', (code) => {
+	console.log(`child process exited with code ${code}`);
+});
 server.listen(port, process.env.IP, function () {
   console.log('集智--wechatRobot已启动，端口号' + port)
 });
