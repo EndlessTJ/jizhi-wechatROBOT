@@ -1,7 +1,8 @@
 const express = require('express');
 const crypto = require('crypto');
 const acessToken = require('./access-token');
-var xmlParser = require('xml2json');
+// var xmlParser = require('xml2json');
+var xmlParser = require('xml2js');
 const router = express.Router();
 /* GET home page. */
 function wechatProof(signature, timestamp, nonce, echostr) {
@@ -23,12 +24,16 @@ router.get('/', function(req, res, next) {
 router.post('/',function (req, res, next) {
 	req.rawBody = '';
 	var json = {};
+	var replyJson = {};
 	req.on('data', (chunk) => {
 		req.rawBody += chunk;
 	});
 	req.on('end', () => {
-		json = xmlParser.toJson(req.rawBody);
-		console.log(json)
+		var parser = new xmlParser.Parser();
+		parser.parseString(req.rawBody, function (err, result) {
+			console.log(result);
+		});
+		res.send('')
 	})
 });
 
