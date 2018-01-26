@@ -1,7 +1,7 @@
 const express = require('express');
 const crypto = require('crypto');
 const acessToken = require('./access-token');
-var xmlParser = require('xml2js');
+var xmlParser = require('xml2json');
 const router = express.Router();
 /* GET home page. */
 function wechatProof(signature, timestamp, nonce, echostr) {
