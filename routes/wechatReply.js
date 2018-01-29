@@ -34,14 +34,9 @@ router.post('/',function (req, res, next) {
 			replyJson = result.xml;
 			replyJson.CreateTime = new Date().getTime();
 			replyJson.Content = '你有什么事情？';
-			var replyMsg = `<xml><ToUserName><![CDATA[${replyJson.ToUserName}]]></ToUserName>
-				<FromUserName><![CDATA[${replyJson.FromUserName}]]></FromUserName>
-				<CreateTime>${replyJson.CreateTime}</CreateTime>
-				<MsgType><![CDATA[text]]></MsgType>
-				<Content><![CDATA[${replyJson.Content}]]></Content>
-				</xml>`;
-			console.log(replyMsg.replace(/\s+/g, ""));
-			res.send(replyMsg.replace(/\s+/g, ""))
+			var replyMsg = `<xml> <ToUserName>< ![CDATA[${replyJson.ToUserName}] ]></ToUserName> <FromUserName>< ![CDATA[${replyJson.FromUserName}] ]></FromUserName> <CreateTime>${replyJson.CreateTime}</CreateTime> <MsgType>< ![CDATA[text] ]></MsgType> <Content>< ![CDATA[${replyJson.Content}] ]></Content> </xml>`;
+			console.log(replyMsg);
+			res.send(replyMsg)
 		});
 	})
 });
