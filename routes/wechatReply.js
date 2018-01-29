@@ -34,20 +34,15 @@ router.post('/',function (req, res, next) {
 			replyJson = result.xml;
 			replyJson.CreateTime = new Date().getTime();
 			replyJson.Content = '你有什么事情？';
-			var replyMsg = `
-					<xml>
-					<ToUserName><![CDATA[${replyJson.ToUserName}]]></ToUserName>
-					<FromUserName><![CDATA[${replyJson.FromUserName}]]></FromUserName>
-					<CreateTime>${replyJson.CreateTime}</CreateTime>
-					<MsgType><![CDATA[text]]></MsgType>
-					<Content><![CDATA[${replyJson.Content}]]></Content>
-					</xml>
-					`;
+			var replyMsg = `<xml>
+												<ToUserName><![CDATA[${replyJson.FromUserName}]]></ToUserName>
+												<FromUserName><![CDATA[${replyJson.ToUserName}]]></FromUserName>
+												<CreateTime>${replyJson.CreateTime}</CreateTime>
+												<MsgType><![CDATA[text]]></MsgType>
+												<Content><![CDATA[${replyJson.Content}]]></Content>
+												</xml>`;
 			console.log(replyMsg);
-			res.format({'text/xml': function(){
-				res.type('text/xml');
-				res.send(replyMsg);
-			}});
+			res.send(replyMsg);
 		});
 	})
 });
