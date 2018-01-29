@@ -1,6 +1,6 @@
 const express = require('express');
-const crypto = require('cypto');
-const robotReply =reuqire('./robotReply');
+const crypto = require('crypto');
+const robotReply =require('./robotReply');
 const acessToken = require('./access-token');
 // var xmlParser = require('xml2json');
 var xmlParser = require('xml2js');
@@ -34,17 +34,18 @@ router.post('/',function (req, res, next) {
 		parser.parseString(req.rawBody, function (err, result) {
 			replyJson = result.xml;
 			replyJson.CreateTime = new Date().getTime();
-
-
-			var replyContent = robotReply({text: replyMsg.Content, sessionId: replyJson.FromUserName});
-			var replyMsg = `<xml>
+			robotReply({text: replyJson.Content, sessionId: replyJson.FromUserName}).then((content) => {
+				var replyContent = content;
+				var replyMsg = `<xml>
 												<ToUserName><![CDATA[${replyJson.FromUserName}]]></ToUserName>
 												<FromUserName><![CDATA[${replyJson.ToUserName}]]></FromUserName>
 												<CreateTime>${replyJson.CreateTime}</CreateTime>
 												<MsgType><![CDATA[text]]></MsgType>
 												<Content><![CDATA[${replyContent}]]></Content>
 												</xml>`;
-			res.send(replyMsg);
+				res.send(replyMsg);
+			});
+
 		});
 	})
 });
