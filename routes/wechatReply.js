@@ -34,7 +34,7 @@ router.post('/',function (req, res, next) {
 		parser.parseString(req.rawBody, function (err, result) {
 			replyJson = result.xml;
 			replyJson.CreateTime = new Date().getTime();
-			robotReply({text: replyJson.Content, sessionId: replyJson.FromUserName}).then((content) => {
+			robotReply({text: replyJson.Content[0], sessionId: replyJson.FromUserName[0]}).then((content) => {
 				var replyContent = content;
 				var replyMsg = `<xml>
 												<ToUserName><![CDATA[${replyJson.FromUserName}]]></ToUserName>
