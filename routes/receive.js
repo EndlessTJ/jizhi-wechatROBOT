@@ -12,7 +12,7 @@ module.exports = function (req, res) {
 			if (!err) {
 				req.replyJson = result.xml;
 				req.replyJson.CreateTime = new Date().getTime();
-				switch (req.replyJson.MsgType){
+				switch (req.replyJson.MsgType[0]){
 					case 'text':
 						robotReply({text: req.replyJson.Content[0], sessionId: req.replyJson.FromUserName[0]}).then((replyContent) => {
 							let replyMsg1 = `<xml>

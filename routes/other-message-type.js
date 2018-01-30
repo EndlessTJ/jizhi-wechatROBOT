@@ -6,7 +6,7 @@ module.exports = function (type, replyJson) {
 							<FromUserName><![CDATA[${replyJson.ToUserName}]]></FromUserName>
 							<CreateTime>${replyJson.CreateTime}</CreateTime>
 							<MsgType><![CDATA[image]]></MsgType>
-							<Image><MediaId>< ![CDATA[${replyJson.MediaId}] ]></MediaId></Image></xml>
+							<Image><MediaId><![CDATA[${replyJson.MediaId}]]></MediaId></Image>
 							</xml>`;
 		case 'voice':
 			return `<xml>
@@ -54,7 +54,7 @@ module.exports = function (type, replyJson) {
 							<FromUserName><![CDATA[${replyJson.ToUserName}]]></FromUserName>
 							<CreateTime>${replyJson.CreateTime}</CreateTime>
 							<MsgType><![CDATA[music]]></MsgType>
-							<Music><Title>< ![CDATA[猜你喜欢的音乐] ]></Title><Description>< ![CDATA[天籁] ]></Description><ThumbMediaId>< ![CDATA[media_id] ]></ThumbMediaId></Music>
+							<Music><Title><![CDATA[猜你喜欢的音乐] ]></Title><Description>< ![CDATA[天籁]]></Description><ThumbMediaId>< ![CDATA[media_id] ]></ThumbMediaId></Music>
 							</xml>`;
 		case 'tuwen':
 			return `<xml>
@@ -62,7 +62,7 @@ module.exports = function (type, replyJson) {
 							<FromUserName><![CDATA[${replyJson.ToUserName}]]></FromUserName>
 							<CreateTime>${replyJson.CreateTime}</CreateTime>
 							<MsgType><![CDATA[text]]></MsgType>
-							<ArticleCount>2</ArticleCount><Articles><item><Title>< ![CDATA[title1] ]></Title> <Description>< ![CDATA[description1] ]></Description><PicUrl>< ![CDATA[picurl] ]></PicUrl><Url>< ![CDATA[url] ]></Url></item><item><Title>< ![CDATA[title] ]></Title><Description>< ![CDATA[description] ]></Description><PicUrl>< ![CDATA[https://jizhi.im/blog/post/implementing-a-cnn-for-text-classification-in-tensorflow] ]></PicUrl><Url>< ![CDATA[https://jizhi.im/index] ]></Url></item></Articles>
+							<ArticleCount>2</ArticleCount><Articles><item><Title><![CDATA[title1]]></Title> <Description><![CDATA[description1]]></Description><PicUrl><![CDATA[picurl]]></PicUrl><Url><![CDATA[url]]></Url></item><item><Title><![CDATA[title]]></Title><Description><![CDATA[description]]></Description><PicUrl><![CDATA[https://jizhi.im/blog/post/implementing-a-cnn-for-text-classification-in-tensorflow]]></PicUrl><Url><![CDATA[https://jizhi.im/index]]></Url></item></Articles>
 							</xml>`;
 	}
 };
