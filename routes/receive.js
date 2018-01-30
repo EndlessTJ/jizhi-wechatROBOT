@@ -30,8 +30,16 @@ module.exports = function (req, res) {
 						res.send(replyMsg);
 						break;
 					case 'voice':
-						let replyMsg2 = otherReply('voice', req.replyJson);
-						res.send(replyMsg2);
+						robotReply({text: req.replyJson.Recognition[0], sessionId: req.replyJson.FromUserName[0]}).then((replyContent) => {
+							let replyMsg1 = `<xml>
+												<ToUserName><![CDATA[${req.replyJson.FromUserName}]]></ToUserName>
+												<FromUserName><![CDATA[${req.replyJson.ToUserName}]]></FromUserName>
+												<CreateTime>${req.replyJson.CreateTime}</CreateTime>
+												<MsgType><![CDATA[text]]></MsgType>
+												<Content><![CDATA[${replyContent}]]></Content>
+												</xml>`;
+							res.send(replyMsg1);
+						});
 						break;
 					case 'video':
 						let replyMsg3 = otherReply('video', req.replyJson);

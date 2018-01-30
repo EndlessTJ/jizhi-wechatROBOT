@@ -8,14 +8,6 @@ module.exports = function (type, replyJson) {
 							<MsgType><![CDATA[image]]></MsgType>
 							<Image><MediaId><![CDATA[${replyJson.MediaId}]]></MediaId></Image>
 							</xml>`;
-		case 'voice':
-			return `<xml>
-							<ToUserName><![CDATA[${replyJson.FromUserName}]]></ToUserName>
-							<FromUserName><![CDATA[${replyJson.ToUserName}]]></FromUserName>
-							<CreateTime>${replyJson.CreateTime}</CreateTime>
-							<MsgType><![CDATA[text]]></MsgType>
-							<Content><![CDATA[发送了语音消息]]></Content>
-							</xml>`;
 		case 'video':
 			return `<xml>
 							<ToUserName><![CDATA[${replyJson.FromUserName}]]></ToUserName>
