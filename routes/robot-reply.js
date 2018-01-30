@@ -18,6 +18,9 @@ module.exports = function (data) {
 				if (!error && response.statusCode === 200 && body && body.result && body.result.fulfillment) {
 					reply_text = body.result.fulfillment.speech;
 				}
+				if (error) {
+					console.log('出错了',error)
+				}
 				if (data.text.trim() === '') {
 					reply_text = '你干嘛一个字都不说呢？';
 				}
