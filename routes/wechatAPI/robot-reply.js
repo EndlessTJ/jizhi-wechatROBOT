@@ -24,6 +24,12 @@ module.exports = function (data) {
 				"perception": {
 					"inputText": {
 						"text": data.text
+					},
+					"inputImage": {
+						"url": ""
+					},
+					"inputMedia": {
+						"url": ""
 					}
 				},
 				"userInfo": {
