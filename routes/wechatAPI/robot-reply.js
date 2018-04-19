@@ -10,11 +10,8 @@ module.exports = function (data) {
 			if (outCount === 2000) {
 				reply_text = '礼品卡已领完'
 			} else {
-				console.log('数据', data)
-				console.log(giftcardData[outCount])
 				reply_text = giftcardData[outCount];
 				outCount += 1;
-				console.log('数字',outCount);
 				fs.writeFile(`${__dirname}/count.txt`, outCount, 'utf8', function () {});
 			}
 			resolve(reply_text)
@@ -34,6 +31,7 @@ module.exports = function (data) {
 					"userId": "蛋蛋"
 				}
 			};
+			console.log('发送参数',JSON.stringify(requestData))
 			request({
 					url: 'http://openapi.tuling123.com/openapi/api/v2',
 					method: "POST",
@@ -44,7 +42,7 @@ module.exports = function (data) {
 					body: JSON.stringify(requestData)
 				},
 				function (error, response, body) {
-					console.log(error,response,body);
+				console.log('结果',body)
 					if (!error && response.statusCode === 200 && body && body.result && body.result.fulfillment) {
 						reply_text = body.result.fulfillment.speech;
 					}

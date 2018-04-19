@@ -14,7 +14,6 @@ module.exports = function (req, res) {
 				req.replyJson.CreateTime = new Date().getTime();
 				switch (req.replyJson.MsgType[0]){
 					case 'text':
-						console.log(req.replyJson.Content[0])
 						robotReply({text: req.replyJson.Content[0], sessionId: req.replyJson.FromUserName[0]}).then((replyContent) => {
 							let replyMsg1 = `<xml>
 												<ToUserName><![CDATA[${req.replyJson.FromUserName}]]></ToUserName>
