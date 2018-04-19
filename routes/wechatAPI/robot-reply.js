@@ -14,25 +14,34 @@ module.exports = function (data) {
 				console.log(giftcardData[outCount])
 				reply_text = giftcardData[outCount];
 				outCount += 1;
+				console.log('数字',outCount);
 				fs.writeFile(`${__dirname}/count.txt`, outCount, 'utf8', function () {});
 			}
 			resolve(reply_text)
 		})
 	} else {
 		return new Promise((resolve, reject) => {
-			var reply_text = '';
-			request.post(
-				'http://openapi.tuling123.com/openapi/api/v2', {
-					"reqType":0,
-					"perception": {
-						"inputText": {
-							"text": data.text
-						}
-					},
-					"userInfo": {
-						"apiKey": "83a4a9c76bc14ab888041f72ff47aa88",
-						"userId": "211968"
+			let reply_text = '';
+			const requestData = {
+				"reqType":0,
+				"perception": {
+					"inputText": {
+						"text": data.text
 					}
+				},
+				"userInfo": {
+					"apiKey": "83a4a9c76bc14ab888041f72ff47aa88",
+					"userId": "蛋蛋"
+				}
+			};
+			request({
+					url: 'http://openapi.tuling123.com/openapi/api/v2',
+					method: "POST",
+					json: true,
+					headers: {
+						"content-type": "application/json",
+					},
+					body: JSON.stringify(requestData)
 				},
 				function (error, response, body) {
 					console.log(error,response,body);
