@@ -26,7 +26,7 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-var Get_Acess_Token = spawn('node',['./routes/access-token.js']);
+var Get_Acess_Token = spawn('node',['./routes/wechatAPI/access-token.js']);
 Get_Acess_Token.stdout.on('data', (data) => {
 	console.log(`stdout: ${data}`);
 });
