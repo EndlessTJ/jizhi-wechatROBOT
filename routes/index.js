@@ -1,8 +1,7 @@
-const express = require('express');
-const router = express.Router();
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const crypto = require('crypto');
 
-module.exports = router;
+
+module.exports = routes = (app) => {
+	app.get('/wechatreply', require('./wechatAPI/wechat-proof')); // 验证身份
+	app.post('/wechatreply',require('./wechatAPI/receive')) //发送消息
+};

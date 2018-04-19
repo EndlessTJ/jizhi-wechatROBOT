@@ -12,4 +12,3 @@ const get_access = function () {
 setInterval(() => {
 	get_access()
 },5400000);
-
