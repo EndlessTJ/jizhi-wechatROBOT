@@ -10,6 +10,8 @@ module.exports = function (data) {
 			if (outCount === 2000) {
 				reply_text = '礼品卡已领完'
 			} else {
+				console.log('数据', data)
+				console.log(giftcardData[outCount])
 				reply_text = giftcardData[outCount];
 				outCount += 1;
 				fs.writeFile(`${__dirname}/count.txt`, outCount, 'utf8', function () {});
