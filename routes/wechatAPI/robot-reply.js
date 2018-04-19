@@ -28,16 +28,16 @@ module.exports = function (data) {
 				},
 				"userInfo": {
 					"apiKey": "83a4a9c76bc14ab888041f72ff47aa88",
-					"userId": "蛋蛋"
+					"userId": "211968"
 				}
 			};
 			console.log('发送参数',JSON.stringify(requestData))
 			request({
 					url: 'http://openapi.tuling123.com/openapi/api/v2',
 					method: "POST",
+					json: true,
 					headers: {
-						"content-type": "application/json",
-						'Accept-Charset': 'utf-8'
+						"content-type": "application/json"
 					},
 					body: JSON.stringify(requestData)
 				},
