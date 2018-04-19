@@ -35,9 +35,9 @@ module.exports = function (data) {
 			request({
 					url: 'http://openapi.tuling123.com/openapi/api/v2',
 					method: "POST",
-					json: true,
 					headers: {
 						"content-type": "application/json",
+						'Accept-Charset': 'utf-8'
 					},
 					body: JSON.stringify(requestData)
 				},
